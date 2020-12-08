@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h1>Airbnb Recommendation System</h1>
+      <hr/>
+      
+      
+      <form action = "/" method = "post">
+		 <h2>Selection criteria</h2>
+		 <h3>What's your maximum price?</h3>
+         <div class="slidecontainer">
+  			<input type="number" id="fname" name="mxprice" min="60" value="1000">
+  			<label for="price">enter max price (minimum 60, default is 1000)</label>
+	  	 </div>
+
+
+	  	 <h3>Which borough? (select one) </h3>
+  		 <div>
+			<input type="radio" id="Personalcriteria4" name="criteria" value="any" checked>
+			<label for="Personalcriteria4">Any</label>
+			
+    		<input type="radio" id="Personalcriteria1" name="criteria" value="crime">
+    		<label for="Personalcriteria1">Borough(s) with least crime cases</label>
+
+    		<input type="radio" id="Personalcriteria2" name="criteria" value="covid">
+    		<label for="Personalcriteria2">Borough(s) with lowest covid-19 infection rate</label>
+
+    		<input type="radio" id="Personalcriteria3" name="criteria" value="census">
+			<label for="Personalcriteria2">Borough(s) with lowest unemployment rate</label>
+  		</div>
+
+		 <h3>What type of room?</h3>
+  		 <div>
+		   <input type="radio" id="roomtype3" name="roomtype" value="any" checked>
+  		   <label for="roomtype3"> Any</label>
+			 
+		   <input type="radio" id="roomtype1" name="roomtype" value="Private room">
+		   <label for="roomtype1"> Private room</label>
+			
+           <input type="radio" id="roomtype2" name="roomtype" value="Entire home/apt">
+  		   <label for="roomtype2"> Entire home/apt</label>
+  		</div> 
+
+		<div>
+    	  <button type="submit">Find Recommendation</button>
+  		</div>
+
+  		<div>
+		  <h2>Recommended listings</h2>
+		  <h3>listing id, price, room type, borough</h3>
+		  {% for l in listing%}
+		    <p>{{l.lid, l.price, l.room_type, l.name}} </p>
+    	  {% endfor %}
+  		</div>
+
+
+		<hr/>
+    	<p><a href="view">Admin View and Operations</a></p>
+      </form>
+      
+
+   </body>
+</html>
